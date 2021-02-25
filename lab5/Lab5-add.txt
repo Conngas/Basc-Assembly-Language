@@ -1,0 +1,29 @@
+	mov ax,a
+	mov bx,0
+	mov ds,ax
+	mov cx,8
+s:	push ds:[bx]
+	add bx,2
+	loop s
+	mov cx,8
+	mov ax,b
+	mov ds,ax
+	mov bx,0
+s:	pop ds:[bx]
+	add bx,2
+	loop s
+ 
+
+	mov ax,a
+	mov ds,ax
+	mov cx,8
+	mov ax,0
+s:	mov bl,ds:[ax]
+	mov bh,es:[ax]
+	add bl,bh
+	push es
+	mov es,c
+	mov es:[ax],bl
+	pop es
+	inc ax
+	loop s
